@@ -14,7 +14,7 @@ def meeting (request):
     return render(request, 'meeting.html')
     
 def checkout (request):
-    return render(request,'check-out.html')
+    return render(request,'checkout.html')
 
 def adminlogin (request):
     return render(request,'adminlogin.html')
