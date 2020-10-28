@@ -1,6 +1,9 @@
-{% extends 'base.html ' %} {% block title %} home {% endblock title %}
+{% extends 'base.html ' %}
+{% block title %} home {% endblock title %}
+
 {% block body %}
-<div class="container my-2 rounded">
+
+<div class="container-fluid my-2 rounded">
   <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
       <li
@@ -11,6 +14,7 @@
       <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
       <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
     </ol>
+
     <div class="carousel-inner">
       <div class="carousel-item active">
         <img
@@ -18,7 +22,7 @@
           class="d-block w-100"
           alt="bhai nahi mil rahi image kya karu ab?"
         />
-        <div class="carousel-caption py-0", style="background: black; border-radius: 13px; opacity:0.4;">
+        <div class="carousel-caption py-0", style="background: black; border-radius: 13px; opacity:0.7;">
           <h5>We care</h5>
           <p>
             We give every patient extra care because your life is important for us
@@ -31,7 +35,7 @@
           class="d-block w-100"
           alt="bhai nahi mil rahi image kya karu ab?"
         />
-        <div class="carousel-caption py-0", style="background: black; border-radius: 13px; opacity:0.4;">
+        <div class="carousel-caption py-0", style="background: black; border-radius: 13px; opacity:0.7;">
           <h5>Best quality treatment</h5>
           <p>
             We have elite doctors and physicians which are professionals in their field
@@ -44,7 +48,7 @@
           class="d-block w-100"
           alt="bhai nahi mil rahi image kya karu ab?"
         />
-        <div class="carousel-caption py-0", style="background: black; border-radius: 13px; opacity:0.4;">
+        <div class="carousel-caption py-0", style="background: black; border-radius: 13px; opacity:0.7;">
           <h5>24 x 7</h5>
           <p>Our emergancy team will always be there in your emergency</p>
         </div>
@@ -72,7 +76,10 @@
 </div>
 
 <div class="header px-3 py-3 pt-md-3 pb-md-4 mx-auto text-center">
-  <h1 class="display-4">Welcom to Cherry Blue hospital</h1>
+  <div class="container">
+    <hr>
+  </div>
+  <h1 class="display-4">Welcome to Cherry Blue hospital</h1>
   <p class="lead"> Hospital that saves the life of your own , coz every life matters  </p>
 </div>
 
@@ -90,7 +97,7 @@
             <li> apoint with doctor</li>
             <li> check out the admitted patient</li>
           </ul>
-          <a href="/adminlogin" type="button" class="btn btn-lg btn-block btn-outline-primary"> Log in</a>
+          <a href="/stafflogin" type="button" class="btn btn-lg btn-block btn-outline-primary"> Log in</a>
         </div>
       </div>
       <div class="card mb-4 shadow-sm">
@@ -110,5 +117,4 @@
   
     </div>
 </div>
-
 {% endblock body %}

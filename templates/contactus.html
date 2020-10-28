@@ -1,6 +1,6 @@
 {% extends 'base.html ' %}
 
-{% block title %} home {% endblock title %}
+{% block title %} Contact Us {% endblock title %}
 
 {% block body %}
   
@@ -12,6 +12,36 @@
 
   <div class="container"> 
       <img src="../static/img/contact_us1.jpg", class="d-block w-100 my-3 rounded", alt="bhai photo nahi mili to soch bata du :)">
+      <hr> 
+      <h1 class="text-center">Contact Us </h1>
+  </div>
+
+
+  <div class="container ">
+    <form method="POST" action="/contactus">
+    {% csrf_token %}
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name" name="name" placeholder="firstname (middlename) lastname" >
+      </div>
+
+      <div class="form-group">
+        <label for="emial">Email address</label>
+        <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com">
+      </div>
+
+      <div class="form-group">
+        <label for="phone">Contact number</label>
+        <input type="phone" class="form-control" id="phone" name="phone" placeholder="+91-9999999999">
+      </div>
+  
+      <div class="form-group">
+        <label for="desc">What you want to tell me?</label>
+        <textarea class="form-control" id="desc" name="desc" rows="3" placeholder="We apreciate your suggestions"></textarea>
+      </div class="container">
+
+      <button type="submit" class="btn btn-primary"> Submit </button>
+    </form>
   </div>
   
 {% endblock body %}
