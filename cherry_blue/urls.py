@@ -22,5 +22,6 @@ admin.site.index_title = "Welcome to Cherry Blue"
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('home.urls'))  
+    path('', include('home.urls')),  
+    path('staff/', include('staff.urls'))  
 ]
