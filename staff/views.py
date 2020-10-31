@@ -17,12 +17,12 @@ def checkout (request):
 def staff_index (request):
     if (request.user.is_anonymous):
         messages.info(request, 'are are bhai kidhar cahle ? pehle log in to kar lo')
-        return  redirect('/stafflogin')
-    return render(request,'staff.html')
+        return  redirect('/staff/stafflogin')
+    return render(request,'staff_index.html')
 
 def stafflogout (request):
     logout(request)
-    return render(request,'index.html')
+    return render(request,'logout.html')
 
 def stafflogin (request):
     if (request.method == "POST"):
@@ -32,7 +32,7 @@ def stafflogin (request):
         if user is not None:
             # A backend authenticated the credentials
             login(request,user)
-            return redirect('/staff')
+            return redirect('/staff/')
         else:
             # No backend authenticated the credentials
             messages.warning(request, 'holy shit! how someone can be this much wrong')

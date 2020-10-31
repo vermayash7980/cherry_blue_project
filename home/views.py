@@ -1,5 +1,5 @@
 from django.shortcuts import render,HttpResponse,redirect
-from home.models import Contact
+from home.models import Contact_Us
 from datetime import datetime
 from django.contrib import messages
 from django.contrib.auth.models import User
@@ -15,11 +15,11 @@ def contactus (request):
         email = request.POST.get('email')
         phone = request.POST.get('phone')
         desc = request.POST.get('desc')
-        contact=Contact(
+        contact=Contact_Us(
             name=name,
             email=email,
             phone=phone,
-            desc=desc,
+            description=desc,
             date=datetime.today()
             )
         contact.save()
