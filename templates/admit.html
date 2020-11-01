@@ -1,7 +1,98 @@
-{% extends 'base.html ' %}
-
-{% block title %} home {% endblock title %}
-
+{% extends 'base.html ' %} 
+{% block title %} Admit {% endblock title %} 
 {% block body %}
-  
+
+<div class="container">
+  <form method="POST" action="/staff/admit">
+    {% csrf_token %}
+    <div class="form-group">
+      <label for="Patient name">Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="name"
+        name="name"
+        placeholder="firstname (middlename) lastname"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for=" Patient email">Email address</label>
+      <input
+        type="email"
+        class="form-control"
+        id="email"
+        name="email"
+        placeholder="name@example.com"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="Patient Contact number">Contact number</label>
+      <input
+        type="phone"
+        class="form-control"
+        id="phone"
+        name="phone"
+        placeholder="+91-9999999999"
+      />
+    </div>
+    <!-- <div>
+      <button
+        class="btn btn-secondary dropdown-toggle"
+        type="button"
+        id="dropdownMenuButton"
+        data-toggle="dropdown"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        Department Name
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item" href="#">'Pediatrician</a>
+        <a class="dropdown-item" href="#">Gynecologist'</a>
+        <a class="dropdown-item" href="#">Psychiatrist</a>
+        <a class="dropdown-item" href="#">Cardiologist</a>
+        <a class="dropdown-item" href="#">Dermatologist</a>
+        <a class="dropdown-item" href="#">Endocrinologist</a>
+        <a class="dropdown-item" href="#">'Gastroenterologist</a>
+        <a class="dropdown-item" href="#">Nephrologist</a>
+        <a class="dropdown-item" href="#">Ophthalmologist</a>
+        <a class="dropdown-item" href="#">Otolaryngologist</a>
+        <a class="dropdown-item" href="#">Pulmonologist</a>
+        <a class="dropdown-item" href="#">Neurologist</a>
+        <a class="dropdown-item" href="#">Oncologist</a>
+      </div>
+    </div> -->
+    <div class="form-group">
+        <label for="disabledSelect">Disabled select menu</label>
+        <select id="disabledSelect" class="form-control">
+          <option>Disabled select</option>
+        </select>
+      </div>
+
+    <div class="form-group">
+      <label for="Disease diagnosed">Disease name </label>
+      <input
+        type="text"
+        class="form-control"
+        id="Disease"
+        name="Department"
+        placeholder="minor fracture in left hand wrist"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="Dcotor Prescribed">Doctor Name </label>
+      <input
+        type="text"
+        class="form-control"
+        id="Dcotor name"
+        name="Dcotor name"
+        placeholder=" Mr. Yash Vardhan yadav"
+      />
+    </div>
+  </form>
+</div>
+
 {% endblock body %}

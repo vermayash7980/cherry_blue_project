@@ -1,5 +1,5 @@
 from django.shortcuts import render,HttpResponse,redirect
-from home.models import Contact_Us
+from home.models import Contact_Us , Doctor
 from datetime import datetime
 from django.contrib import messages
 from django.contrib.auth.models import User
@@ -28,4 +28,12 @@ def contactus (request):
 
 def aboutus (request):
     return render(request,'aboutus.html')
+
+def doctors (request):
+    name=Doctor.objects.name
+
+    context= {
+        "name   ":name[0]
+    }
+    return render(request,'doctors.html',context)
 

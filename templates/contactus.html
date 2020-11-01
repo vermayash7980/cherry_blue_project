@@ -22,22 +22,22 @@
     {% csrf_token %}
       <div class="form-group">
         <label for="name">Name</label>
-        <input type="text" class="form-control" id="name" name="name" placeholder="firstname (middlename) lastname" >
+        <input type="text" class="form-control" id="name" name="name" placeholder="firstname (middlename) lastname" required >
       </div>
 
       <div class="form-group">
         <label for="emial">Email address</label>
-        <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com">
+        <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com" required>
       </div>
 
       <div class="form-group">
         <label for="phone">Contact number</label>
-        <input type="phone" class="form-control" id="phone" name="phone" placeholder="+91-9999999999">
+        <input type="phone" class="form-control" id="phone" name="phone" placeholder="+91-9999999999" required>
       </div>
   
       <div class="form-group">
         <label for="desc">What you want to tell me?</label>
-        <textarea class="form-control" id="desc" name="desc" rows="3" placeholder="We apreciate your suggestions"></textarea>
+        <textarea class="form-control" id="desc" name="desc" rows="3" placeholder="We apreciate your suggestions" required></textarea>
       </div class="container">
 
       <button type="submit" class="btn btn-primary"> Submit </button>
