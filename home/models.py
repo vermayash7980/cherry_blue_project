@@ -22,7 +22,6 @@ class Doctor (models.Model):
     DEPT=(
         ('Pediatrician','Pediatrician'),
         ('Gynecologist','Gynecologist'),
-        ('Gynecologist','Gynecologist'),
         ('Psychiatrist','Psychiatrist'),
         ('Cardiologist','Cardiologist'),
         ('Dermatologist','Dermatologist'),

@@ -30,10 +30,6 @@ def aboutus (request):
     return render(request,'aboutus.html')
 
 def doctors (request):
-    name=Doctor.objects.name
-
-    context= {
-        "name   ":name[0]
-    }
-    return render(request,'doctors.html',context)
+    doc=Doctor.objects.all()
+    return render(request,'doctors.html',{"data":doc})
 

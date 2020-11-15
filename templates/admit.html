@@ -1,97 +1,75 @@
-{% extends 'base.html ' %} 
-{% block title %} Admit {% endblock title %} 
+{% extends 'base.html ' %}
+{% block title %} Admit {% endblock title %}
 {% block body %}
 
 <div class="container">
-  <form method="POST" action="/staff/admit">
+  <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+    <h1 class="display-4">Admit patient</h1>
+  </div>
+</div>
+
+
+<div class="container">
+  <form method="POST" action="/staff/admit2" >
     {% csrf_token %}
-    <div class="form-group">
-      <label for="Patient name">Name</label>
-      <input
-        type="text"
-        class="form-control"
-        id="name"
-        name="name"
-        placeholder="firstname (middlename) lastname"
-      />
-    </div>
-
-    <div class="form-group">
-      <label for=" Patient email">Email address</label>
-      <input
-        type="email"
-        class="form-control"
-        id="email"
-        name="email"
-        placeholder="name@example.com"
-      />
-    </div>
-
-    <div class="form-group">
-      <label for="Patient Contact number">Contact number</label>
-      <input
-        type="phone"
-        class="form-control"
-        id="phone"
-        name="phone"
-        placeholder="+91-9999999999"
-      />
-    </div>
-    <!-- <div>
-      <button
-        class="btn btn-secondary dropdown-toggle"
-        type="button"
-        id="dropdownMenuButton"
-        data-toggle="dropdown"
-        aria-haspopup="true"
-        aria-expanded="false"
-      >
-        Department Name
-      </button>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <a class="dropdown-item" href="#">'Pediatrician</a>
-        <a class="dropdown-item" href="#">Gynecologist'</a>
-        <a class="dropdown-item" href="#">Psychiatrist</a>
-        <a class="dropdown-item" href="#">Cardiologist</a>
-        <a class="dropdown-item" href="#">Dermatologist</a>
-        <a class="dropdown-item" href="#">Endocrinologist</a>
-        <a class="dropdown-item" href="#">'Gastroenterologist</a>
-        <a class="dropdown-item" href="#">Nephrologist</a>
-        <a class="dropdown-item" href="#">Ophthalmologist</a>
-        <a class="dropdown-item" href="#">Otolaryngologist</a>
-        <a class="dropdown-item" href="#">Pulmonologist</a>
-        <a class="dropdown-item" href="#">Neurologist</a>
-        <a class="dropdown-item" href="#">Oncologist</a>
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label for="firstName">First name</label>
+        <input type="text" class="form-control" id="first_name" name="first_name" placeholder="" value="" required>
       </div>
-    </div> -->
-    <div class="form-group">
-        <label for="disabledSelect">Disabled select menu</label>
-        <select id="disabledSelect" class="form-control">
-          <option>Disabled select</option>
-        </select>
+      <div class="col-md-6 mb-3">
+        <label for="lastName">Last name</label>
+        <input type="text" class="form-control" id="last_ame" name="last_name" placeholder="" required>
       </div>
-
-    <div class="form-group">
-      <label for="Disease diagnosed">Disease name </label>
-      <input
-        type="text"
-        class="form-control"
-        id="Disease"
-        name="Department"
-        placeholder="minor fracture in left hand wrist"
-      />
     </div>
 
-    <div class="form-group">
-      <label for="Dcotor Prescribed">Doctor Name </label>
-      <input
-        type="text"
-        class="form-control"
-        id="Dcotor name"
-        name="Dcotor name"
-        placeholder=" Mr. Yash Vardhan yadav"
-      />
+    <div class="mb-3">
+      <label for="phone"> Contact Number </label>
+      <input type="phone" class="form-control" id="phone" name="phone" placeholder="" required>
     </div>
+
+    <div class="mb-3">
+      <label for="address">Address</label>
+      <textarea type="text" class="form-control" id="address" name="address" placeholder=""  required></textarea>
+    </div>
+
+    <div class="mb-3">
+      <label for="birthdate">date of birth</label>
+      <input type="date" class="form-control" id="dob" name="dob" placeholder="" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="address">blood group</label>
+      <input type="text" class="form-control" id="bg" name="bg" placeholder="" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="country">Department</label>
+      <select class="custom-select d-block w-100" id="dept" name="dept" required>
+        <option value="">Choose</option>
+        <option value="Pediatrician">Pediatrician</option>
+        <option value="Gynecologist">Gynecologist</option>
+        <option value="Psychiatrist">Psychiatrist</option>
+        <option value="Cardiologist">Cardiologist</option>
+        <option value="Dermatologist">Dermatologist</option>
+        <option value="Endocrinologist">Endocrinologist</option>
+        <option value="Gastroenterologist">Gastroenterologist</option>
+        <option value="Nephrologist">Nephrologist</option>
+        <option value="Ophthalmologist">Ophthalmologist</option>
+        <option value="Otolaryngologist">Otolaryngologist</option>
+        <option value="Pulmonologist">Pulmonologist</option>
+        <option value="Neurologist">Neurologist</option>
+        <option value="Oncologist">Oncologist</option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label for="address">Description</label>
+      <textarea type="text" class="form-control" id="description" name="description" placeholder=""  required></textarea> 
+    </div>
+
+    <button class="btn btn-primary btn-lg btn-block" type="submit">Admit</button>
+
   </form>
 </div>
 

@@ -1,24 +1,58 @@
-from django.shortcuts import render,HttpResponse,redirect
+from django.shortcuts import render,HttpResponse,redirect,HttpResponseRedirect
 from datetime import datetime
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
+from staff.models import patient
 
 # Create your views here.
-def admit (request):
-    return render(request, 'admit.html')
-    
-def meeting (request):
-    return render(request, 'meeting.html')
-    
-def checkout (request):
-    return render(request,'checkout.html')
+def admit2 (request):
+    if (request.user.is_anonymous):
+        messages.info(request, 'please login first you cant use this webpage with out login')
+        return  redirect('/staff/stafflogin')
+    if (request.method == 'POST'):
+        name= request.POST.get('first_name')+" "+request.POST.get('last_name')
+        phone=request.POST.get('phone')
+        address=request.POST.get('address')
+        dob=request.POST.get('dob')
+        bg=request.POST.get('bg')
+        dept=request.POST.get('dept')
+        description=request.POST.get('description')
+        y=patient(
+            name=name,
+            address=address,
+            date_of_birth=dob,
+            date_of_admit=datetime.today(),
+            contact_no=phone,
+            blood_grp=bg,
+            dept=dept,
+            description=description
+        )
+        y.save()
+        messages.success(request, 'Patient admitted successfully')
+    return HttpResponseRedirect('/staff/')
 
+def admit(request):
+    if (request.user.is_anonymous):
+        messages.info(request, 'please login first you cant use this webpage with out login')
+        return  redirect('/staff/stafflogin')
+    return render(request,'admit.html')
+    
+def checkout (request, id):
+    if (request.user.is_anonymous):
+        messages.info(request, 'please login first you cant use this webpage with out login')
+        return  redirect('/staff/stafflogin')
+    if (request.method == 'POST'):
+        x=patient.objects.get(pk=id)
+        x.delete()
+    return HttpResponseRedirect('/staff/')
+    
 def staff_index (request):
     if (request.user.is_anonymous):
-        messages.info(request, 'are are bhai kidhar cahle ? pehle log in to kar lo')
+        messages.info(request, 'please login first you cant use this webpage with out login')
         return  redirect('/staff/stafflogin')
-    return render(request,'staff_index.html')
+    data = patient.objects.all()
+    return render(request,'staff_index.html',{'data':data})
 
 def stafflogout (request):
     logout(request)
@@ -35,6 +69,8 @@ def stafflogin (request):
             return redirect('/staff/')
         else:
             # No backend authenticated the credentials
-            messages.warning(request, 'holy shit! how someone can be this much wrong')
+            messages.warning(request, 'please enter the correct credentials')
             return render(request,'stafflogin.html')
     return render(request,'stafflogin.html')
+
+

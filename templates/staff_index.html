@@ -1,33 +1,110 @@
-{% extends 'base.html ' %}
-{% block title %} staff-home {% endblock title %} 
-{%block body %}
+{% extends 'base2.html ' %} {% block title %} staff-home {% endblock title %} {% block body %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <div class="my-3">
+        <a href="/staff/admit" class="btn-lg btn btn-outline-primary">
+          Admit
+        </a>
+      </div>
+      <div class="my-3">
+        <a href="/staff/stafflogout" class="btn-lg btn btn-outline-primary">
+          logout
+        </a>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Patient No.</th>
+            <th scope="col">Name</th>
+            <th scope="col">Department</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for i in data %}
+          <tr>
+            <th scope="row">{{ i.id }}</th>
+            <td>{{ i.name }}</td>
+            <td>{{i.dept }}</td>
+            <td>
+              <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal">
+                details
+              </button>
+              <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="details">{{ i.name }}</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <div>Address : {{ i.address }}</div>
+                      <div>Date of birth : {{ i.date_of_birth }}</div>
+                      <div>Date of addmission : {{i.date_of_admit }}</div>
+                      <div>Blood group : {{ i.blood_grp }}</div>
+                      <div>Contact number : {{ i.contact_no }}</div>
+                      <div>Department : {{ i.dept }}</div>
+                      <div>Disciption : {{ i.description }}</div>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                        Close
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
-<div class="container my-3">
-  <p>
-    <a href="/staff/admit">Admit new patient</a>
-  </p>
-  <br />
-  <p style="color: rgb(255, 165, 0);">
-    <a
-      href="#"
-      class="btn btn-primary btn-lg disabled"
-      tabindex="2"
-      role="button"
-      aria-disabled="true"
-      >Set Appointment</a
-    >
-  </p>
-  <br />
-  <p style="color: rgb(255, 165, 0);">
-    <a
-      href="#"
-      class="btn btn-primary btn-lg disabled"
-      tabindex="3"
-      role="button"
-      aria-disabled="true"
-      >Check out patient</a
-    >
-  </p>
+              <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModal2">
+                checkout
+              </button>
+              <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="details">confirm</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <div> <bold>are you sure you want to checkout the patient? </bold> </div>
+                      <div>name : {{ i.name }}</div>
+                      <div>Address : {{ i.address }}</div>
+                      <div>Date of birth : {{ i.date_of_birth }}</div>
+                      <div>Date of addmission : {{i.date_of_admit }}</div>
+                      <div>Blood group : {{ i.blood_grp }}</div>
+                      <div>Contact number : {{ i.contact_no }}</div>
+                      <div>Department : {{ i.dept }}</div>
+                      <div>Disciption : {{ i.description }}</div>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                        Close
+                      </button>
+                      <form action="{% url 'checkout' i.id %}" method="POST" class="d-inline">
+                        {% csrf_token %}
+                        <input type="submit" class="btn btn-danger " value="Check out" />
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </td>
+          </tr>
+          {% endfor %}
+          
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
 
 {% endblock body %}
