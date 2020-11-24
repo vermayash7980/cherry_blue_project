@@ -30,10 +30,10 @@
             <td>{{ i.name }}</td>
             <td>{{i.dept }}</td>
             <td>
-              <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal">
+              <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal_{{i.id}}">
                 details
               </button>
-              <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+              <div class="modal fade" id="exampleModal_{{i.id}}" tabindex="-1" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
                 <div class="modal-dialog">
                   <div class="modal-content">
@@ -61,10 +61,10 @@
                 </div>
               </div>
 
-              <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModal2">
+              <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModal2_{{ i.id }}">
                 checkout
               </button>
-              <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel"
+              <div class="modal fade" id="exampleModal2_{{ i.id }}" tabindex="-1" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
                 <div class="modal-dialog">
                   <div class="modal-content">
@@ -91,7 +91,7 @@
                       </button>
                       <form action="{% url 'checkout' i.id %}" method="POST" class="d-inline">
                         {% csrf_token %}
-                        <input type="submit" class="btn btn-danger " value="Check out" />
+                        <input type="submit" class="btn btn-danger" value="Check out" />
                       </form>
                     </div>
                   </div>
