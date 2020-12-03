@@ -1,5 +1,6 @@
 from django.shortcuts import render,HttpResponse,redirect,HttpResponseRedirect
 from datetime import datetime
+from datetime import date as dt
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
@@ -73,4 +74,13 @@ def stafflogin (request):
             return render(request,'stafflogin.html')
     return render(request,'stafflogin.html')
 
-
+def payment(request ,id):
+    if (request.user.is_anonymous):
+        messages.info(request, 'please login first you cant use this webpage with out login')
+        return  redirect('/staff/stafflogin')
+    if (request.method == 'POST'):
+        x=patient.objects.get(pk=id)
+        y=datetime.now().date()
+        delta= str(y-x.date_of_admit)
+        return render(request,'payment.html',{'i':x, 'amount' : delta[0:-14]})
+    return HttpResponseRedirect('/staff/')

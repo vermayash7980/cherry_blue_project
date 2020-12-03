@@ -8,6 +8,8 @@ urlpatterns = [
     path ("admit2",views.admit2,name = 'on admit button pressed'),
     path ("checkout/<int:id>/",views.checkout,name = 'checkout'),
     path ("stafflogin",views.stafflogin,name='stafflogin'),
-    path ("stafflogout",views.stafflogout,name='stafflogout')
+    path ("stafflogout",views.stafflogout,name='stafflogout'),
+    path ("payment/<int:id>/",views.payment,name = 'payment')
+
 
 ]
